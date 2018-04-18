@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace ConsoleComponent\Command;
 
@@ -11,11 +11,12 @@ class HelloWorldCommand extends Command
     protected function configure()
     {
         $this->setName('hello:world')
-            ->setDescription('Outputs \'Hello World\'');
+            ->setDescription('Outputs \'Hello World\'')
+            ->setHidden(true);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Hello World');
+        $output->writeln('<info>Hello World</info>');
     }
 }

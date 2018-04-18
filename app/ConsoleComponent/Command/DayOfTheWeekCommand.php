@@ -3,10 +3,9 @@
 namespace ConsoleComponent\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-
 
 class DayOfTheWeekCommand extends Command
 {
@@ -34,7 +33,7 @@ class DayOfTheWeekCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $date = $input->getArgument('date');
-        $output->writeln("The day of week is: ".date("l",strtotime($date)));        
+        $output->writeln("The day of week is: " . date("l", strtotime($date)) . "\n\r");
     }
 
     public static function validateDate($date, $format = 'Y-m-d')
