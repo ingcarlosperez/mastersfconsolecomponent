@@ -17,15 +17,24 @@ class DayOfTheWeekCommand extends Command
             ->addArgument('date', InputArgument::REQUIRED, 'The date to evaluate.');
     }
 
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        echo "Initialized!\n\r";
+    }
+
+    protected function interact(InputInterface $input, OutputInterface $output)
+    {
+        $date = $input->getArgument('date');
+        if (!self::validateDate($date)) {
+            $output->writeln('Invalid date');
+            die;
+        }
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $date = $input->getArgument('date');
-
-        if (!self::validateDate($date)) {
-            $output->writeln('Invalid date');            
-        }else{
-            $output->writeln("The day of week is: ".date("l",strtotime($date)));            
-        }
+        $output->writeln("The day of week is: ".date("l",strtotime($date)));        
     }
 
     public static function validateDate($date, $format = 'Y-m-d')
